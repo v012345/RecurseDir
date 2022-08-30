@@ -6,6 +6,7 @@
 namespace fs = std::filesystem;
 
 std::set<std::string> files;
+std::set<std::string> ext;
 
 void getFilesInDir(fs::path path)
 {
@@ -19,8 +20,9 @@ void getFilesInDir(fs::path path)
         }
         else
         {
+            // ext.insert(v.path().extension().string());
             // if (v.path().extension().string() == ".json" || v.path().extension().string() == ".png")
-            if (v.path().extension().string() == ".png")
+            if (v.path().extension().string() == ".png" or v.path().extension().string() == ".jpg")
             {
 
                 std::string fileName = v.path().filename().string();
@@ -42,6 +44,10 @@ int main()
     {
         myfile << file << std::endl;
     }
+    // for (auto &e : ext)
+    // {
+    //     myfile << e << std::endl;
+    // }
     myfile.close();
     return 0;
     // fs::path path_1(fs::current_path());
